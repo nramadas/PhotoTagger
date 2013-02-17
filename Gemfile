@@ -16,6 +16,7 @@ group :development do
   gem 'guard-rspec'
   gem 'terminal-notifier-guard'
   gem 'sqlite3'
+  gem 'better_errors'
 end
 
 group :production do
