@@ -1,11 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  helper_method :current_user
+
   def current_user
     return nil if cookies[:user_id].blank?
     return nil if cookies[:token].blank?
-    user = User.find(cookies[:user_id])
-    return nil unless user
+    begin
+      user = User.find(cookies[:user_id])
+    rescue
+      return nil
+    end
     return nil unless user.token.reverse == cookies[:token]
     user
   end

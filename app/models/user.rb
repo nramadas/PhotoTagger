@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 
   validates_format_of     :email, with: EMAIL_REGEX, message: "invalid email"
 
+  has_many :images
+
   def check_password_confirmation?
     password
   end
