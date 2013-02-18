@@ -1,0 +1,7 @@
+<div class="imageViewer"></div>
+<script>
+  $(function () {
+    var m = new ImageCanvas($(".imageViewer"), <%= @image.id %>);
+    m.loadImage()
+  });
+</script>

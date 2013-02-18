@@ -8,4 +8,10 @@ class Image < ActiveRecord::Base
 
   belongs_to :user
 
+  def as_json(options = {})
+    {
+      id: id,
+      url: image_data.url
+    }
+  end
 end

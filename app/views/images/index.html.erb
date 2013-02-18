@@ -1,0 +1,9 @@
+<h1><%= current_user.username %>/images</h1>
+<div class="imagesContainer"></div>
+<script>
+  $(function () {
+    var canvas = new IndexCanvas($(".imagesContainer"));
+
+    canvas.populate(<%= current_user.id %>);
+  });
+</script>
