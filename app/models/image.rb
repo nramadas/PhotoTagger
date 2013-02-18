@@ -7,6 +7,7 @@ class Image < ActiveRecord::Base
   validates_presence_of :image_data, message: "must exist"
 
   belongs_to :user
+  has_many :tags
 
   def as_json(options = {})
     {

@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
   def as_json(options = {})
     {
+      id: id,
       email: email,
       username: username,
       created_at: created_at,

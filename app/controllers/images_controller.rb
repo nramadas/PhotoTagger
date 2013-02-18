@@ -2,9 +2,12 @@ class ImagesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @images = Image.where(user_id: params[:user_id])
-
-    respond_with @images
+    if current_user
+      @images = Image.where(user_id: params[:user_id])
+      respond_with @images
+    else
+      redirect_to login_path
+    end
   end
 
   def new
@@ -25,6 +28,10 @@ class ImagesController < ApplicationController
   def show
     @image = Image.find(params[:id])
 
-    respond_with @image
+    if current_user == @image.user
+      respond_with @image
+    else
+      redirect_to login_path
+    end
   end
 end

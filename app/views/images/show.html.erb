@@ -1,7 +1,13 @@
-<div class="imageViewer"></div>
+<div class="imageViewer">
+  <div class='tagContainer'></div>
+</div>
+<div class="toggleTags">Toggle Tags</div>
 <script>
   $(function () {
     var m = new ImageCanvas($(".imageViewer"), <%= @image.id %>);
-    m.loadImage()
+    m.initialize();
+
+    var t = new TagToggler($(".toggleTags"), $(".tagContainer"), <%= @image.id %>);
+    t.initialize();
   });
 </script>

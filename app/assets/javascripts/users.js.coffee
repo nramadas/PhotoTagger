@@ -23,3 +23,25 @@ this.IndexCanvas = (element) ->
     )
 
   return
+
+this.User = (id, username) ->
+  this.id = id
+  this.username = username
+
+  return
+
+this.User.all = []
+
+this.User.grabAll = () ->
+  User.all = []
+
+  $.getJSON(
+    "/users",
+    (data) ->
+      $(data).each(() ->
+        User.all.push(new User(this.id, this.username))
+
+      )
+  )
+
+  return

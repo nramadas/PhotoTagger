@@ -1,11 +1,15 @@
 PhotoTagging::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :users, only: [:new, :create, :show] do
+  resources :users, only: [:index, :new, :create, :show] do
     resources :images, only: [:index, :new]
   end
 
-  resources :images, only: [:show, :create]
+  resources :images, only: [:show, :create] do
+    resources :tags, only: [:index, :new]
+  end
+
+  resources :tags, only: [:create, :destroy]
 
   root to: 'sessions#new'
 
